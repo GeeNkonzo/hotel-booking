@@ -24,13 +24,46 @@
             </div>
         </header>
         <main>
-            <div class="middle-grid">
-                <form>
-                    
+
+            <h1>Find affordable accommodation in Cape Town.</h1>
+            
+                <form action="">
+                    <div class="form-grid">
+                        <div>
+                            <label>Hotel:</label>
+                            <select id="hotel">
+                                <option value="1">hotel1</option>
+                                <option value="2">hotele2</option>
+                                <option value="3">motel3</option>
+                                <option value="4">beenbee4</option>
+                            </select> 
+                        </div>
+
+                        <div>
+                            <label>Check in date:</label>
+                                <input type="date" id="start" name="arrival" min="2018-01-01" max="2020-12-31">
+                        </div>
+                        <div>
+                            <label>Check out date:</label>
+                                <input type="date" id="end" name="leave" min="2018-01-01" max="2020-12-31">
+                        </div>
+                    </div>
                 </form>
-            </div>
+
+            
+
+            <!-- <div class="gallery-grid">
+                <div class="item1"></div>
+                <div class="item2"></div>
+                <div class="item3"></div>
+                <div class="item4"></div>
+                <div class="item5"></div>
+                <div class="item6"></div>
+                <div class="item7"></div>
+                <div class="item8"></div>
+            </div> -->
         </main>
-        <!-- <main>gallery</main> -->
+        
         <footer>footer</footer>
     </section>
 </body>

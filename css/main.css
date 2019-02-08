@@ -1,4 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
+    padding: 0;
     margin: 0;
     background: linear-gradient(#b2cecf88, #b2cecf88), url('../img/bg-img.jpeg');
     /* background:#b2cecf; */
@@ -11,7 +16,7 @@ body {
   display: grid;
   width: 100%;
   height: 100vh;
-  margin: auto;
+  margin: 0 auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 8fr 1fr;
   grid-template-areas:  "header header header"
@@ -39,17 +44,18 @@ header {
 
 main {
     grid-area: main;
-  padding: 20px;
+  padding: 20px 0px;
   max-width: 60em;
-  width:100%;
+  width: 80%;
   margin: 0 auto;
-
+  color: #fffdef;
 }
+
 
 footer {
     grid-area: footer;
     background-color: #b2cecf;
-  padding: 20px;
+    padding: 20px;
 
 }
 
@@ -91,8 +97,69 @@ footer {
 
 }
 
-.middle-grid {
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr;
+.btn:hover {
+    background-color: #3d5367aa;
+    border-color: #3d5367aa;
 }
+
+.form-grid {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    width:100%;
+    grid-gap: 10px;
+}
+
+input[type=date], select {
+    margin: 0;
+    padding: .3em 1em;
+    border: none;
+    border-radius: 2em;
+    display: block;
+    width:80%;
+}
+
+/* .gallery-grid {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+     grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    width:100%;
+    margin-top: 10px;
+}
+
+.gallery-grid > div {
+    background-size: cover;
+    height: 10em;
+}
+
+.item1 {
+    background-image: url(../img/hotel1.jpeg);
+}
+
+.item2 {
+    background-image: url(../img/hotel2.jpeg);
+}
+
+.item3 {
+    background-image: url(../img/hotel3.jpeg);
+}
+
+.item4 {
+    background-image: url(../img/hotel4.jpeg);
+}
+
+.item5 {
+    background-image: url(../img/gallery1.jpeg);
+}
+
+.item6 {
+    background-image: url(../img/gallery2.jpeg);
+}
+
+.item7 {
+    background-image: url(../img/gallery3.jpeg);
+}
+
+.item8 {
+    background-image: url(../img/gallery4.jpeg);
+} */
