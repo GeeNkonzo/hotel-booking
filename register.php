@@ -1,18 +1,12 @@
 <?php
-// Initialize the session
-session_start();
-require_once "connect.php";
-include_once "classes.php";
+    // Include config file
+    require_once "connect.php";
+    include_once "classes.php";
 
-$login = new login;
-$login->log($conn);
- 
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: booking.php");
-    exit;
-}
+    $register = new registration;
+    $register->reg($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +25,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                         <img src="img/logo.png">
                     </div>
                     <div class="greetings">
-                        <h1>Hello!</h1>
+                        <h1>Hello User!</h1>
                     </div>
                 </div>
             </header>
@@ -39,11 +33,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <div class="form-grid">
                     <div></div>
                     <div>
-                        <h2>Login</h2>
-                        <p>Please fill in your credentials to login.</p>
+                        <h2>Sign Up</h2>
+                        <p>Please fill this form to create an account.</p>
                         <form action="index.php" method="post">
                         
-                        <p>Don't have an account? <a href="register.php">Sign up now</a>.</p></p>
+                            <p>Already have an account? <a href="index.php">Login here</a>.</p>
                         </form>
                     </div>
                     <div></div>
@@ -51,6 +45,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             </main>
 
             <footer>footer</footer>
-        </section>    
-    </body>
+    </section>    
+</body>
 </html>

@@ -82,7 +82,7 @@ footer {
     margin: auto 5px auto auto;
 }
 
-.btn {
+.logout-btn {
     background-color:#3d5367; 
     border-radius: 2px;
     border-color: #3d5367;
@@ -107,16 +107,63 @@ footer {
     grid-template-columns: repeat(4,1fr);
     width:100%;
     grid-gap: 10px;
+    /* background-color: #3d5367; */
 }
 
-input[type=date], select {
+input[type=date], input[type=number], select {
     margin: 0;
     padding: .3em 1em;
     border: none;
     border-radius: 2em;
     display: block;
     width:80%;
+    max-width: 100%;
 }
+
+button {
+    border-radius: 2em;
+    display: block;
+    width:90%;
+    /* height:50px; */
+    border: none;
+    padding: .3em 1em;
+    background-color: #3d5367;
+    color:#fffdef;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.merge {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+main > h1 {
+    font-size: 2em;
+}
+
+
+@media (max-width: 879px) {
+    .form-grid {
+        max-width: 640px;
+        margin: 0 auto;
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    .merge {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .button {
+        width:80%;
+    }
+}
+
+/* label {
+    font-size: .5em;
+} */
 
 /* .gallery-grid {
     display:grid;
