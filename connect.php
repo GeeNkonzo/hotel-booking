@@ -15,8 +15,15 @@
             guestname VARCHAR(50),
             hotelname VARCHAR(50),
             arrival VARCHAR(30),
-            depart VARCHAR(30))";
+            depart VARCHAR(30),
+            rooms INT(2))";
+        $user_create = "CREATE TABLE IF NOT EXISTS user (
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50),
+            password VARCHAR(50))";
+            
         $conn->query($sql);
+        $conn->query($user_create);
     }
 
     

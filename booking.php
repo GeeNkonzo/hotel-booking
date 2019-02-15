@@ -1,9 +1,22 @@
 <?php
 // Initialize the session
 session_start();
+include_once("connect.php");
+include_once("classes.php");
 // if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 //     header("location: index.php");
 //     exit;
+// $_SESSION["username"] = $_POST["username"];
+if (isset($_POST["login"])) {
+    $login = new login;
+    $login->log($conn);
+}
+if (isset($_POST["book"])) {
+    $booking = new bookings;
+    $booking->insertBooking($conn);
+    // $booking->displayBooking($conn);
+
+};
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,10 +36,12 @@ session_start();
                     <img src="img/logo.png">
                 </div>
                 <div class="greetings">
-                    <h1>Hello User<?php echo $_SESSION["username"] ?>!</h1>
+                    <h1>Hello <?php echo $_SESSION["username"] ?>!</h1>
                 </div>
                 <div class="logout">
-                    <button class="logout-btn">Log Out</button>
+                    <form action="confirm.php" method="post">
+                        <button class="logout-btn" name="logout" type="submit">Log Out</button>
+                    </form>
                 </div>
             </div>
         </header>
@@ -38,7 +53,7 @@ session_start();
                     <div class="form-grid">
                         <div>
                             <label>Hotel:</label>
-                            <select id="hotel" name="hotel">
+                            <select id="hotel" name="hotel" required>
                                 <option value="1">Mojo Hotel</option>
                                 <option value="2">Cape Diamond Hotel</option>
                                 <option value="3">Fountains Hotel</option>
@@ -48,15 +63,15 @@ session_start();
 
                         <div>
                             <label>Check in date:</label>
-                                <input type="date" id="start" name="arrival" min="2018-01-01" max="2020-12-31">
+                                <input type="date" id="start" name="arrival" min="2018-01-01" max="2020-12-31" required>
                         </div>
                         <div>
                             <label>Check out date:</label>
-                                <input type="date" id="end" name="departure" min="2018-01-01" max="2020-12-31">
+                                <input type="date" id="end" name="departure" min="2018-01-01" max="2020-12-31" required>
                         </div>
                         <div>
                            <label>Number of rooms:</label>
-                            <select id="rooms" name="rooms">
+                            <select id="rooms" name="rooms" required>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

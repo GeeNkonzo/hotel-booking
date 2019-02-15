@@ -3,8 +3,7 @@
     require_once "connect.php";
     include_once "classes.php";
 
-    $register = new registration;
-    $register->reg($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +34,18 @@
                     <div>
                         <h2>Sign Up</h2>
                         <p>Please fill this form to create an account.</p>
-                        <form action="index.php" method="post">
-                        
+                        <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+                            <label>Name:</label><br>
+                            <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>">
+                            <br>
+                            <label>Password:</label><br>
+                            <input type="password" name="password" placeholder="password" value="<?php if(isset($_POST["submit"])) {echo $password;} ?>">
+                            <br>
+                            <label>Confirm password:</label><br>
+                            <input type="password" name="confirm_password" placeholder="confirm password" value="<?php if(isset($_POST["submit"])) {echo $confirm_password;} ?>"><br>
+
+                            <button type="submit" name="register">Register</button>
+
                             <p>Already have an account? <a href="index.php">Login here</a>.</p>
                         </form>
                     </div>

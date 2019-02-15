@@ -4,8 +4,10 @@
     include_once "connect.php";
 
     $bookings = new bookings;
-   $bookings->insertBooking($conn);
-   $bookings->displayBooking($conn);
+    if(isset($_POST['confirm'])) {
+        $bookings->insertBooking($conn);
+    }
+//    $bookings->displayBooking($conn);
 ?>
 
 <!DOCTYPE html>
@@ -26,16 +28,18 @@
                     <img src="img/logo.png">
                 </div>
                 <div class="greetings">
-                    <h1>Hello User<?php echo $_SESSION["username"] ?>!</h1>
+                    <h1>Hello <?php echo $_SESSION["username"] ?>!</h1>
                 </div>
                 <div class="logout">
-                    <button class="logout-btn">Log Out</button>
+                    <form action="index.php" method="post">
+                        <button class="logout-btn" name="logout" type="submit">Log Out</button>
+                    </form>
                 </div>
             </div>
         </header>
         <main>
-
-            
+        <h2></h2>
+        <?php $bookings->displayConfirm() ?>
         </main>
         
         <footer>footer</footer>

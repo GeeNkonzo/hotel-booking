@@ -71,6 +71,7 @@ footer {
 
 .greetings > h1 {
     margin: 0 auto;
+    text-transform: capitalize;
 }
 
 .greetings {
@@ -110,7 +111,7 @@ footer {
     /* background-color: #3d5367; */
 }
 
-input[type=date], input[type=number], select {
+input[type=date], input[type=number], input[type=text], input[type=password], select {
     margin: 0;
     padding: .3em 1em;
     border: none;
@@ -118,6 +119,16 @@ input[type=date], input[type=number], select {
     display: block;
     width:80%;
     max-width: 100%;
+}
+
+.submit {
+    border-radius: 2em;
+    display: block;
+    border: none;
+    padding: .3em 1em;
+    background-color: #3d5367;
+    color:#fffdef;
+    font-weight: bold; 
 }
 
 button {

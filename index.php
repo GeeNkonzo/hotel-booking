@@ -3,14 +3,18 @@
 session_start();
 require_once "connect.php";
 include_once "classes.php";
-
-$login = new login;
-$login->log($conn);
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: booking.php");
     exit;
+}
+if(isset($_POST["logout"])) {
+    session_destroy();
+}
+if(isset($_POST["register"])) {
+    $register = new registration;
+    $register->reg($conn);
 }
 ?>
 <!DOCTYPE html>
@@ -41,9 +45,16 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                     <div>
                         <h2>Login</h2>
                         <p>Please fill in your credentials to login.</p>
-                        <form action="index.php" method="post">
-                        
+                        <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
+                            <label>Name:</label><br>
+                            <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>">
+                            <br>
+                            <label>Password:</label><br>
+                            <input type="password" name="password" placeholder="password" value="<?php if(isset($_POST["submit"])) {echo $password;} ?>"><br>
+                            <button type="submit" name="register">Login</button>
+                                                    
                         <p>Don't have an account? <a href="register.php">Sign up now</a>.</p></p>
+
                         </form>
                     </div>
                     <div></div>
