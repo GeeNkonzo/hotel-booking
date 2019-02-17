@@ -1,7 +1,8 @@
 <?php
-
+    // registration class created with method of validating user input and verifying data
     class registration {
 
+        // variables declared
         public $username;
         public $password;
         public $confirm_password;
@@ -10,6 +11,7 @@
         public $password_err;
 
         function reg($conn) {
+            // When user posts data is assigned to the above variables and then checked
             if (isset($_POST["register"])) {
                 $this->username = $_POST["username"];
                 $this->password = $_POST["password"];
@@ -32,8 +34,10 @@
                     <span style="color:red"><?php echo $this->password_err ?></span>
                 <?php
                 } else {
+                    // Once data meets requirements it is added to table
                     $user_insert = "INSERT INTO user (username,password) VALUES ('$this->username','$this->password')";
                     if ($conn->query($user_insert)) {
+                    // user is then redirected to index page
                     header("Location: index.php");
                     } else {
                         echo "Error: " . $conn->error;
@@ -46,23 +50,29 @@
     }
 }
 
+// login class created with method of validating user input and verifying data
     class login {
+
+        // variables declared
         public $username; 
         public $password;
         public $err; 
         
         function log($conn) {
+            // user table created 
             $user_create = $conn->query("CREATE TABLE IF NOT EXISTS user (
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(50),
                 password VARCHAR(50))");
 
+            // check if table is created
             if($user_create) {
                 
             } else {
                 echo "Error: " . $conn->error;
             }
 
+            // once user posts, data is assigned the variables declared above and then checked
             if (isset($_POST["login"])) {
                 $this->username = $_POST["username"];
                 $this->password = $_POST["password"];
@@ -81,7 +91,11 @@
             }        
     }
 }
+
+// bookings class created with method of validating user input and verifying data
     class bookings {
+
+        // variables declared
         public $user;
         public $hotel;
         public $dateIn;
@@ -146,6 +160,14 @@
 
             <?php
         };
+        }
+
+        // method to calculate the user's invoice
+        function invoice() {
+            $prices = $conn->query("CREATE TABLE IF NOT EXISTS prices (
+                hotel INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                hotel_name VARCHAR(50),
+                cost INT(6))");
         }
     }
 

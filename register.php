@@ -22,8 +22,13 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
 <body>
+
+    <!-- main container -->
     <section class="grid-container">
+
+        <!-- header section of container -->
         <header>
+                <!-- Header section grid -->
                 <div class="top-grid">
                     <div class="logo">
                         <img src="img/logo.png">
@@ -33,12 +38,18 @@
                     </div>
                 </div>
             </header>
+
+            <!-- main section of page -->
             <main>
+
+                <!-- For created to position grid in the middle -->
                 <div class="form-grid">
                     <div></div>
                     <div>
                         <h2>Sign Up</h2>
                         <p>Please fill this form to create an account.</p>
+
+                        <!-- Sign up form -->
                         <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
                             <label>Name:</label><br>
                             <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>">
@@ -51,6 +62,7 @@
 
                             <button type="submit" name="register">Register</button>
 
+                            <!-- Redirect user to login page if they already have an account -->
                             <p>Already have an account? <a href="index.php">Login here</a>.</p>
                         </form>
                     </div>

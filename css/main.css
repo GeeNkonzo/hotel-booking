@@ -1,3 +1,4 @@
+/* Base styles */
 * {
     box-sizing: border-box;
 }
@@ -7,8 +8,6 @@ body {
     margin: 0;
     background: linear-gradient(#b2cecf88, #b2cecf88), url('../img/bg.jpeg') no-repeat;
     background-size: cover;
-    /* background:#b2cecf; */
-
     color: #3d5367;
     font-family: 'Playfair Display', serif;
    }
@@ -22,19 +21,10 @@ body {
   grid-template-rows: 1fr 8fr 1fr;
   grid-template-areas:  "header header header"
                         "main main main"
-                        /* "main main main" */
                         "footer footer footer";
   grid-gap: 10px;
   padding: 0;
 }
-
-/* .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px
-  #EBEBD3;
-} */
 
 header {
   grid-area: header;
@@ -59,6 +49,8 @@ footer {
     padding: 20px;
 
 }
+
+/* Header section styles */
 
 .top-grid {
     display:grid;
@@ -94,7 +86,6 @@ footer {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    /* margin: 4px 2px; */
     cursor: pointer;
 
 }
@@ -104,13 +95,13 @@ footer {
     border-color: #3d5367aa;
 }
 
+/* Main section styles */
 
 .form-grid {
     display:grid;
     grid-template-columns: repeat(4,1fr);
     width:100%;
     grid-gap: 10px;
-    /* background-color: #3d5367; */
 }
 
 
@@ -118,7 +109,12 @@ footer {
     position: relative;
     width: 50%;
   }
+
+  main > h1 {
+    font-size: 2em;
+}
   
+  /* Image overlay */
   .image {
     opacity: 1;
     width: 200px;
@@ -152,6 +148,8 @@ footer {
     padding: 16px 32px;
   }
 
+  /* Data input styling */
+
 input[type=date], input[type=number], input[type=text], input[type=password], select {
     margin: 0;
     padding: .3em 1em;
@@ -161,6 +159,8 @@ input[type=date], input[type=number], input[type=text], input[type=password], se
     width:80%;
     max-width: 100%;
 }
+
+/* buttons */
 
 .submit {
     border-radius: 2em;
@@ -176,7 +176,6 @@ button {
     border-radius: 2em;
     display: block;
     width:90%;
-    /* height:50px; */
     border: none;
     padding: .3em 1em;
     background-color: #3d5367;
@@ -191,9 +190,7 @@ button {
     grid-column-end: 4;
 }
 
-main > h1 {
-    font-size: 2em;
-}
+/* Gallery  */
 
 .gallery-grid {
     display:grid;
@@ -208,6 +205,8 @@ main > h1 {
     height: 200px;
 }
 
+
+/* Responsive design */
 
 @media (max-width: 879px) {
     .form-grid {

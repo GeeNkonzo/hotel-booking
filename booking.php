@@ -8,10 +8,10 @@ include_once("classes.php");
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: index.php");
     exit;
-    
+
 // Assign user's name to session
 $_SESSION["username"] = $_POST["username"];
-// C
+// Call booking class with functions
 if (isset($_POST["book"])) {
     $booking = new bookings;
     $booking->insertBooking($conn);
@@ -30,8 +30,11 @@ if (isset($_POST["book"])) {
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
 <body>
+    <!-- Beginning of grid-container (main grid) -->
     <section class="grid-container">
+        <!-- Header section of the main grid -->
         <header>
+            <!-- Grid created in header for the structure of logo, greeting and logout button -->
             <div class="top-grid">
                 <div class="logo">
                     <img src="img/logo.png">
@@ -45,12 +48,19 @@ if (isset($_POST["book"])) {
                     </form>
                 </div>
             </div>
+            <!-- End of grid within the header section of main grid -->
         </header>
+        <!-- End of header section -->
+
+        <!-- Beginning of the main section of the page  -->
         <main>
 
             <h1>Find affordable accommodation in Cape Town.</h1>
-            
+             
+            <!-- Booking form -->
                 <form action="booking.php" method="post">
+
+                    <!-- Grid for form data input -->
                     <div class="form-grid">
                         <div>
                             <label>Hotel:</label>
@@ -91,7 +101,10 @@ if (isset($_POST["book"])) {
                         </div>
                     </div>
                 </form>
+                <!-- End of form -->
                 <br><br><br><br><br><br><br>
+
+                <!-- Grid for hotel images -->
                 <div class="gallery-grid">
                     <div class="container">
                         <img src="img/hotel1.jpeg" class="image">

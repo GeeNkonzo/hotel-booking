@@ -31,8 +31,11 @@ if(isset($_POST["logout"])) {
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
 <body>
+    <!-- main container -->
     <section class="grid-container">
+        <!-- header section of container -->
         <header>
+            <!-- Header section grid -->
                 <div class="top-grid">
                     <div class="logo">
                         <img src="img/logo.png">
@@ -42,12 +45,17 @@ if(isset($_POST["logout"])) {
                     </div>
                 </div>
             </header>
+            <!-- main section of page -->
             <main>
+
+            <!-- For created to position grid in the middle -->
                 <div class="form-grid">
                     <div></div>
                     <div>
                         <h2>Login</h2>
                         <p>Please fill in your credentials to login.</p>
+
+                        <!-- Login form -->
                         <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
                             <label>Name:</label><br>
                             <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>" required>
@@ -55,7 +63,8 @@ if(isset($_POST["logout"])) {
                             <label>Password:</label><br>
                             <input type="password" name="password" placeholder="password" value="<?php if(isset($_POST["submit"])) {echo $password;} ?>" required><br>
                             <button type="submit" name="login">Login</button>
-                                                    
+                        
+                        <!-- Redirect user to Registration page if user is not a  member yet -->
                         <p>Don't have an account? <a href="register.php">Sign up now</a>.</p></p>
 
                         </form>

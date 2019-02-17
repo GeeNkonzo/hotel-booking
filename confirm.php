@@ -23,8 +23,14 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
 <body>
+
+    <!-- main container -->
     <section class="grid-container">
+
+        <!-- header section of container -->
         <header>
+
+            <!-- Header section grid -->
             <div class="top-grid">
                 <div class="logo">
                     <img src="img/logo.png">
@@ -39,6 +45,8 @@
                 </div>
             </div>
         </header>
+
+        <!-- main section of page -->
         <main>
             <form action="" method="post">
                 <h2>Please verify information below before confirming your booking.</h2>

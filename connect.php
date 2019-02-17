@@ -10,6 +10,8 @@
     if ($conn->connect_error) {
         echo "Connection failed: " . mysqli_connect_error();
     }else{
+
+        // create tables
         $sql = "CREATE TABLE IF NOT EXISTS bookings (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             guestname VARCHAR(50),
@@ -21,7 +23,8 @@
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(50),
             password VARCHAR(50))";
-            
+        
+        // Submit query
         $conn->query($sql);
         $conn->query($user_create);
     }
