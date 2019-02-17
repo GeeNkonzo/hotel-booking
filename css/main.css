@@ -5,7 +5,8 @@
 body {
     padding: 0;
     margin: 0;
-    background: linear-gradient(#b2cecf88, #b2cecf88), url('../img/bg-img.jpeg');
+    background: linear-gradient(#b2cecf88, #b2cecf88), url('../img/bg.jpeg') no-repeat;
+    background-size: cover;
     /* background:#b2cecf; */
 
     color: #3d5367;
@@ -48,7 +49,7 @@ main {
   max-width: 60em;
   width: 80%;
   margin: 0 auto;
-  color: #fffdef;
+  color: #3d5367;
 }
 
 
@@ -103,6 +104,7 @@ footer {
     border-color: #3d5367aa;
 }
 
+
 .form-grid {
     display:grid;
     grid-template-columns: repeat(4,1fr);
@@ -110,6 +112,45 @@ footer {
     grid-gap: 10px;
     /* background-color: #3d5367; */
 }
+
+
+.container {
+    position: relative;
+    width: 50%;
+  }
+  
+  .image {
+    opacity: 1;
+    width: 200px;
+    height: 200px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .container:hover .image {
+    opacity: 0.3;
+  }
+  
+  .container:hover .middle {
+    opacity: 1;
+  }
+  
+  .text {
+    color: black;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
 
 input[type=date], input[type=number], input[type=text], input[type=password], select {
     margin: 0;
@@ -154,6 +195,19 @@ main > h1 {
     font-size: 2em;
 }
 
+.gallery-grid {
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    width:90%;
+    margin-top: 10px;
+}
+
+.gallery-grid > img {
+    background-size: cover;
+    height: 200px;
+}
+
 
 @media (max-width: 879px) {
     .form-grid {
@@ -170,54 +224,13 @@ main > h1 {
     .button {
         width:80%;
     }
+
+    .gallery-grid {
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        width:100%;
+        margin-top: 10px;
+    }
 }
 
-/* label {
-    font-size: .5em;
-} */
-
-/* .gallery-grid {
-    display:grid;
-    grid-template-columns: repeat(4,1fr);
-     grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
-    width:100%;
-    margin-top: 10px;
-}
-
-.gallery-grid > div {
-    background-size: cover;
-    height: 10em;
-}
-
-.item1 {
-    background-image: url(../img/hotel1.jpeg);
-}
-
-.item2 {
-    background-image: url(../img/hotel2.jpeg);
-}
-
-.item3 {
-    background-image: url(../img/hotel3.jpeg);
-}
-
-.item4 {
-    background-image: url(../img/hotel4.jpeg);
-}
-
-.item5 {
-    background-image: url(../img/gallery1.jpeg);
-}
-
-.item6 {
-    background-image: url(../img/gallery2.jpeg);
-}
-
-.item7 {
-    background-image: url(../img/gallery3.jpeg);
-}
-
-.item8 {
-    background-image: url(../img/gallery4.jpeg);
-} */

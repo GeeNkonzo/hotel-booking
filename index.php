@@ -9,13 +9,16 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: booking.php");
     exit;
 }
+
+if(isset($_POST["login"])) {
+    $register = new login;
+    $register->log($conn);
+}
+
 if(isset($_POST["logout"])) {
     session_destroy();
 }
-if(isset($_POST["register"])) {
-    $register = new registration;
-    $register->reg($conn);
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,11 +50,11 @@ if(isset($_POST["register"])) {
                         <p>Please fill in your credentials to login.</p>
                         <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
                             <label>Name:</label><br>
-                            <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>">
+                            <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>" required>
                             <br>
                             <label>Password:</label><br>
-                            <input type="password" name="password" placeholder="password" value="<?php if(isset($_POST["submit"])) {echo $password;} ?>"><br>
-                            <button type="submit" name="register">Login</button>
+                            <input type="password" name="password" placeholder="password" value="<?php if(isset($_POST["submit"])) {echo $password;} ?>" required><br>
+                            <button type="submit" name="login">Login</button>
                                                     
                         <p>Don't have an account? <a href="register.php">Sign up now</a>.</p></p>
 

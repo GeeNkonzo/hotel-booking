@@ -7,6 +7,8 @@
     if(isset($_POST['confirm'])) {
         $bookings->insertBooking($conn);
     }
+
+   
 //    $bookings->displayBooking($conn);
 ?>
 
@@ -38,8 +40,14 @@
             </div>
         </header>
         <main>
-        <h2></h2>
-        <?php $bookings->displayConfirm() ?>
+            <form action="" method="post">
+                <h2>Please verify information below before confirming your booking.</h2>
+                <?php $bookings->displayConfirm() ?>
+
+                <button type="submit" name="confirm">CONFIRM BOOKING</button>
+                
+
+            </form>
         </main>
         
         <footer>footer</footer>

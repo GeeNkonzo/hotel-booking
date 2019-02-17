@@ -3,6 +3,11 @@
     require_once "connect.php";
     include_once "classes.php";
 
+    if(isset($_POST["register"])) {
+        $register = new registration;
+        $register->reg($conn);
+    }
+
 
 ?>
 

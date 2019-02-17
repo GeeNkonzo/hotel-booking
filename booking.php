@@ -3,20 +3,21 @@
 session_start();
 include_once("connect.php");
 include_once("classes.php");
-// if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-//     header("location: index.php");
-//     exit;
-// $_SESSION["username"] = $_POST["username"];
-if (isset($_POST["login"])) {
-    $login = new login;
-    $login->log($conn);
-}
+
+// Check if there is a user logged in or not
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: index.php");
+    exit;
+    
+// Assign user's name to session
+$_SESSION["username"] = $_POST["username"];
+// C
 if (isset($_POST["book"])) {
     $booking = new bookings;
     $booking->insertBooking($conn);
-    // $booking->displayBooking($conn);
-
+    $booking->displayBooking($conn);
 };
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +40,7 @@ if (isset($_POST["book"])) {
                     <h1>Hello <?php echo $_SESSION["username"] ?>!</h1>
                 </div>
                 <div class="logout">
-                    <form action="confirm.php" method="post">
+                    <form action="index.php" method="post">
                         <button class="logout-btn" name="logout" type="submit">Log Out</button>
                     </form>
                 </div>
@@ -49,7 +50,7 @@ if (isset($_POST["book"])) {
 
             <h1>Find affordable accommodation in Cape Town.</h1>
             
-                <form action="confirm.php" method="post">
+                <form action="booking.php" method="post">
                     <div class="form-grid">
                         <div>
                             <label>Hotel:</label>
@@ -90,6 +91,33 @@ if (isset($_POST["book"])) {
                         </div>
                     </div>
                 </form>
+                <br><br><br><br><br><br><br>
+                <div class="gallery-grid">
+                    <div class="container">
+                        <img src="img/hotel1.jpeg" class="image">
+                        <div class="middle">
+                            <div class="text">Mojo Hotel</div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <img src="img/hotel2.jpeg" class="image">
+                        <div class="middle">
+                            <div class="text">Cape Diamond Hotel</div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <img src="img/hotel3.jpeg" class="image">
+                        <div class="middle">
+                            <div class="text">Fountains Hotel</div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <img src="img/hotel4.jpeg" class="image">
+                        <div class="middle">
+                            <div class="text">Taj Hotel</div>
+                        </div>
+                    </div>
+                </div>
         </main>
         
         <footer>footer</footer>
