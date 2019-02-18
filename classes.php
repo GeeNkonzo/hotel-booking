@@ -34,6 +34,7 @@
                     <span style="color:red"><?php echo $this->password_err ?></span>
                 <?php
                 } else {
+                    $this->password = password_hash($this->password, PASSWORD_DEFAULT);
                     // Once data meets requirements it is added to table
                     $user_insert = "INSERT INTO user (username,password) VALUES ('$this->username','$this->password')";
                     if ($conn->query($user_insert)) {
@@ -77,14 +78,14 @@
                 $this->username = $_POST["username"];
                 $this->password = $_POST["password"];
                 $resource = $conn->query("SELECT * FROM user");
-                while($row = $resource->fetch_assoc()) {
-                    if(trim($this->username)==$row["username"] && (trim($this->password)==$row["password"])) {
+                while($row = $resource->fetch_array(MYSQLI_ASSOC)) {
+                    if(trim($this->username)==$row["username"] && (password_verify(trim($this->password),$row["password"]))) {
                         $_SESSION["username"] = $row["username"];
                         header("Location: booking.php");
                     } else {
                         $this->err = "Username or Password incorrect";
                         ?>
-                            <span style="color:red"><?php echo $this->err ?></span>
+                            <span style="color:red"><?php echo $this->err?></span>
                         <?php
                     }
                 }
@@ -96,6 +97,8 @@
     class bookings {
 
         // variables declared
+        public $guest;
+        public $surname;
         public $user;
         public $hotel;
         public $dateIn;
@@ -104,44 +107,53 @@
         public $numDays;
 
         function insertBooking($conn) {
+            $this->guest = $_POST["guestname"];
+            $this->surname = $_POST["surname"];
             $this->user = $_SESSION["username"];
             $this->hotel= $_POST["hotel"];
             $this->dateIn= $_POST["arrival"];
             $this->dateOut= $_POST["departure"];
             $this->rooms= $_POST["rooms"];
 
-            if(!$conn->query("INSERT INTO bookings(guestname, hotelname,arrival, depart, rooms)
-            VALUES ('$this->user','$this->hotel','$this->dateIn', '$this->dateOut','$this->rooms')")) {
+            if(!$conn->query("INSERT INTO bookings(guestname, surname, username, hotelname,arrival, depart, rooms)
+            VALUES ('$this->guest','$this->surname','$this->user','$this->hotel','$this->dateIn', '$this->dateOut','$this->rooms')")) {
                 echo "error " . $conn->error;
             } else {
                 header("Location: confirm.php");
             }
         }
 
-        function displayConfirm() {
+        function displayConfirm($conn) {
+            $this->user = $_SESSION["username"];
+            $this->guest = $_POST["guestname"];
+            $this->surname = $_POST["surname"];
             $datetime1 = new DateTime($_POST['arrival']);
             $datetime2 = new DateTime($_POST['departure']);
             $numDays= $datetime1->diff($datetime2)->format("%d");
-            if($result = $conn->query("SELECT * FROM bookings WHERE guestname='$this->user")) {
+            // if($conn->query("SELECT * FROM bookings WHERE guestname='$this->user")) {
                 ?> 
-                    <div>
-                        Hotel Name: <?php echo $_POST["hotel"];?>
+                    <div class="form-bg">
+                        <div>
+                            <h3>Thank you <?php echo $_POST["guestname"] . " " . $_POST["surname"] ;?> for booking with Hotel Bookings Online. Below, are your details:  </h3>
+                        </div>
+                        <div>
+                            Hotel Name: <?php echo $_POST["hotel"];?>
+                        </div>
+                        <div>
+                            CHECKIN DATE:<?php echo $_POST["arrival"];?>
+                        </div>
+                        <div>
+                            CHECKOUT DATE: <?php echo $_POST["departure"];?>
+                        </div>
+                        <div>
+                            NUMBER OF ROOMS: <?php echo $_POST["rooms"];?>
+                        </div>
+                        <div>
+                            LENGTH OF STAY: <?php echo $numDays . " days";?>
+                        </div>
                     </div>
-                    <div>
-                        CHECKIN DATE:<?php echo $_POST["arrival"];?>
-                    </div>
-                    <div>
-                        CHECKOUT DATE: <?php echo $_POST["departure"];?>
-                    </div>
-                    <div>
-                        NUMBER OF ROOMS: <?php echo $_POST["rooms"];?>
-                    </div>
-                    <div>
-                        LENGTH OF STAY: <?php echo $numDays . " days";?>
-                    </div>
-
                 <?php
-            }
+            // }
         }
         function displayBooking($conn) {
 

@@ -58,10 +58,10 @@ if(isset($_POST["logout"])) {
                         <!-- Login form -->
                         <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="post">
                             <label>Name:</label><br>
-                            <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["submit"])) {echo $username;} ?>" required>
+                            <input type="text" name="username" placeholder="username" value="<?php if(isset($_POST["register"])) {echo $_POST["username"];} ?>" required>
                             <br>
                             <label>Password:</label><br>
-                            <input type="password" name="password" placeholder="password" value="<?php if(isset($_POST["submit"])) {echo $password;} ?>" required><br>
+                            <input type="password" name="password" placeholder="password" required><br>
                             <button type="submit" name="login">Login</button>
                         
                         <!-- Redirect user to Registration page if user is not a  member yet -->

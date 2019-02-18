@@ -15,6 +15,8 @@
         $sql = "CREATE TABLE IF NOT EXISTS bookings (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             guestname VARCHAR(50),
+            surname VARCHAR(50),
+            username VARCHAR(50),
             hotelname VARCHAR(50),
             arrival VARCHAR(30),
             depart VARCHAR(30),
@@ -22,7 +24,7 @@
         $user_create = "CREATE TABLE IF NOT EXISTS user (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             username VARCHAR(50),
-            password VARCHAR(50))";
+            password VARCHAR(255))";
         
         // Submit query
         $conn->query($sql);

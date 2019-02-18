@@ -4,13 +4,11 @@ session_start();
 include_once("connect.php");
 include_once("classes.php");
 
-// Check if there is a user logged in or not
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
-    exit;
 
 // Assign user's name to session
-$_SESSION["username"] = $_POST["username"];
+if (isset($_POST["username"])) {
+    $_SESSION["username"] = $_POST["username"];
+}
 // Call booking class with functions
 if (isset($_POST["book"])) {
     $booking = new bookings;
@@ -58,10 +56,18 @@ if (isset($_POST["book"])) {
             <h1>Find affordable accommodation in Cape Town.</h1>
              
             <!-- Booking form -->
-                <form action="booking.php" method="post">
+                <form action="confirm.php" method="post">
 
                     <!-- Grid for form data input -->
                     <div class="form-grid">
+                        <div>
+                            <label>Name:</label>
+                            <input type="text" name="guestname" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label>Surname:</label>
+                            <input type="text" name="surname" placeholder="Your Surname" required>
+                        </div>
                         <div>
                             <label>Hotel:</label>
                             <select id="hotel" name="hotel" required>
@@ -95,10 +101,9 @@ if (isset($_POST["book"])) {
                                 <option value="10">10</option>
                             </select> 
                         </div>
-                        <div class="merge">
-                            <br>
+                            <br><br>
                             <button type="submit" name="book">BOOK!</button>
-                        </div>
+                        <div></div>
                     </div>
                 </form>
                 <!-- End of form -->
@@ -129,11 +134,14 @@ if (isset($_POST["book"])) {
                         <div class="middle">
                             <div class="text">Taj Hotel</div>
                         </div>
+                        <div id="amount">
+                            <p>R1500 per night</p>
+                        </div>
                     </div>
                 </div>
         </main>
         
-        <footer>footer</footer>
+        <footer><p>Gcobisa Nkonzo &#169;</p></footer>
     </section>
 </body>
 </html>

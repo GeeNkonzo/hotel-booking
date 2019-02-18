@@ -48,14 +48,17 @@
 
         <!-- main section of page -->
         <main>
-            <form action="" method="post">
-                <h2>Please verify information below before confirming your booking.</h2>
-                <?php $bookings->displayConfirm() ?>
-
-                <button type="submit" name="confirm">CONFIRM BOOKING</button>
-                
-
-            </form>
+                <form action="booking.php" method="post">
+                <div class="form-grid">
+                    <div></div>
+                    <div>
+                        <?php $bookings->displayConfirm($conn) ?>
+                        <br><br>
+                        <a href="booking.php"><button>Home</button></a><br>
+                    </div>
+                    <div></div>
+                </div>
+                </form>
         </main>
         
         <footer>footer</footer>
