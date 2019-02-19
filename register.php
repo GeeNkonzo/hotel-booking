@@ -1,6 +1,6 @@
 <?php
     // Include config file
-    require_once "connect.php";
+    require_once "config/connect.php";
     include_once "classes.php";
 
     if(isset($_POST["register"])) {
