@@ -34,7 +34,7 @@
                         <img src="img/logo.png">
                     </div>
                     <div class="greetings">
-                        <h1>Hello User!</h1>
+                        <h1>Hello!</h1>
                     </div>
                 </div>
             </header>
@@ -70,7 +70,7 @@
                 </div>
             </main>
 
-            <footer>footer</footer>
+            <footer><p>Gcobisa Nkonzo &#169; 2019</p></footer>
     </section>    
 </body>
 </html>

@@ -10,7 +10,7 @@ body {
     background-size: cover;
     color: #3d5367;
     font-family: 'Playfair Display', serif;
-   }
+}
 
 .grid-container {
   display: grid;
@@ -87,7 +87,6 @@ footer {
     display: inline-block;
     font-size: 14px;
     cursor: pointer;
-
 }
 
 .btn:hover {
@@ -126,9 +125,9 @@ footer {
     height: 200px;
     transition: .5s ease;
     backface-visibility: hidden;
-  }
+}
   
-  .middle {
+.middle {
     transition: .5s ease;
     opacity: 0;
     position: absolute;
@@ -137,7 +136,7 @@ footer {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-  }
+}
   
   .container:hover .image {
     opacity: 0.3;

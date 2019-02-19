@@ -117,7 +117,7 @@
 
             if(!$conn->query("INSERT INTO bookings(guestname, surname, username, hotelname,arrival, depart, rooms)
             VALUES ('$this->guest','$this->surname','$this->user','$this->hotel','$this->dateIn', '$this->dateOut','$this->rooms')")) {
-                // echo "error " . $conn->error;
+               // echo "error " . $conn->error;
             } else {
                 header("Location: confirm.php");
             }
@@ -178,22 +178,6 @@
         
         }
         
-
-        // method to calculate the user's invoice
-        function invoice($conn) {
-            $prices = $conn->query("CREATE TABLE IF NOT EXISTS prices (
-                hotel_id INT(4),
-                hotel_name VARCHAR(50),
-                cost INT(6))");
-            if($conn->query("INSERT INTO prices(hotel_id, hotel_name, cost) VALUES (1, 'Mojo Hotel',800),(2, 'Cape Diamond Hotel',1200), (3, 'Fountains Hotel',1350), (4, 'Taj Hotel',1500);")) {
-
-            } else {
-                echo "error " . $conn->error;
-            }
-
-           
-
-        }
     }
 
 
