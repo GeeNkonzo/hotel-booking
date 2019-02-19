@@ -6,6 +6,7 @@
     $bookings = new bookings;
     if(isset($_POST['confirm'])) {
         $bookings->insertBooking($conn);
+        $bookings->invoice($conn);
     }
 
    
@@ -52,16 +53,16 @@
                 <div class="form-grid">
                     <div></div>
                     <div>
-                        <?php $bookings->displayConfirm($conn) ?>
+                        <?php $bookings->displayConfirm($conn); ?>
                         <br><br>
                         <a href="booking.php"><button>Home</button></a><br>
                     </div>
-                    <div></div>
+                    <div> <?php $bookings->invoice($conn); ?> </div>
                 </div>
                 </form>
         </main>
         
-        <footer>footer</footer>
+        <footer><p>Gcobisa Nkonzo &#169; 2019</p></footer>
     </section>
 </body>
 </html>

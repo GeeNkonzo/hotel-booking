@@ -22,7 +22,7 @@ if (isset($_POST["book"])) {
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
@@ -71,10 +71,10 @@ if (isset($_POST["book"])) {
                         <div>
                             <label>Hotel:</label>
                             <select id="hotel" name="hotel" required>
-                                <option value="1">Mojo Hotel</option>
-                                <option value="2">Cape Diamond Hotel</option>
-                                <option value="3">Fountains Hotel</option>
-                                <option value="4">Taj Cape Town</option>
+                                <option value="Mojo Hotel">Mojo Hotel</option>
+                                <option value="Cape Diamond Hotel">Cape Diamond Hotel</option>
+                                <option value="Fountains Hotel">Fountains Hotel</option>
+                                <option value="Taj Hotel">Taj Hotel</option>
                             </select> 
                         </div>
 
@@ -107,7 +107,7 @@ if (isset($_POST["book"])) {
                     </div>
                 </form>
                 <!-- End of form -->
-                <br><br><br><br><br><br><br>
+                <br><br><br>
 
                 <!-- Grid for hotel images -->
                 <div class="gallery-grid">
@@ -116,17 +116,29 @@ if (isset($_POST["book"])) {
                         <div class="middle">
                             <div class="text">Mojo Hotel</div>
                         </div>
+                        <div id="amount">
+                            <p>Mojo Hotel</p>
+                            <p>R800 per night</p>
+                        </div>
                     </div>
                     <div class="container">
                         <img src="img/hotel2.jpeg" class="image">
                         <div class="middle">
                             <div class="text">Cape Diamond Hotel</div>
                         </div>
+                        <div id="amount">
+                            <p>Cape Diamond Hotel</p>
+                            <p>R1200 per night</p>
+                        </div>
                     </div>
                     <div class="container">
                         <img src="img/hotel3.jpeg" class="image">
                         <div class="middle">
                             <div class="text">Fountains Hotel</div>
+                        </div>
+                        <div id="amount">
+                            <p>Fountains Hotel</p>
+                            <p>R1350 per night</p>
                         </div>
                     </div>
                     <div class="container">
@@ -135,13 +147,14 @@ if (isset($_POST["book"])) {
                             <div class="text">Taj Hotel</div>
                         </div>
                         <div id="amount">
+                            <p>Taj Hotel</p>
                             <p>R1500 per night</p>
                         </div>
                     </div>
                 </div>
         </main>
         
-        <footer><p>Gcobisa Nkonzo &#169;</p></footer>
+        <footer><p>Gcobisa Nkonzo &#169; 2019</p></footer>
     </section>
 </body>
 </html>

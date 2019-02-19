@@ -117,7 +117,7 @@
 
             if(!$conn->query("INSERT INTO bookings(guestname, surname, username, hotelname,arrival, depart, rooms)
             VALUES ('$this->guest','$this->surname','$this->user','$this->hotel','$this->dateIn', '$this->dateOut','$this->rooms')")) {
-                echo "error " . $conn->error;
+                // echo "error " . $conn->error;
             } else {
                 header("Location: confirm.php");
             }
@@ -130,56 +130,69 @@
             $datetime1 = new DateTime($_POST['arrival']);
             $datetime2 = new DateTime($_POST['departure']);
             $numDays= $datetime1->diff($datetime2)->format("%d");
-            // if($conn->query("SELECT * FROM bookings WHERE guestname='$this->user")) {
                 ?> 
                     <div class="form-bg">
                         <div>
                             <h3>Thank you <?php echo $_POST["guestname"] . " " . $_POST["surname"] ;?> for booking with Hotel Bookings Online. Below, are your details:  </h3>
                         </div>
+                        <br>
                         <div>
                             Hotel Name: <?php echo $_POST["hotel"];?>
                         </div>
+                        <br>
                         <div>
-                            CHECKIN DATE:<?php echo $_POST["arrival"];?>
+                            CHECKIN DATE: <?php echo $_POST["arrival"];?>
                         </div>
+                        <br>
                         <div>
                             CHECKOUT DATE: <?php echo $_POST["departure"];?>
                         </div>
+                        <br>
                         <div>
                             NUMBER OF ROOMS: <?php echo $_POST["rooms"];?>
                         </div>
+                        <br>
                         <div>
                             LENGTH OF STAY: <?php echo $numDays . " days";?>
                         </div>
+                        <br>
+                        <div>
+                            <?php 
+                                
+                                if($_POST["hotel"]=="Mojo Hotel") {
+                                    $price=800;
+                                } else if($_POST["hotel"]=="Cape Diamond Hotel") {
+                                    $price=1200;
+                                } else if($_POST["hotel"]=="Fountains Hotel") {
+                                    $price=1350;
+                                } else {
+                                    $price=1500;
+                                }
+
+                                $total = $_POST["rooms"] * $numDays * $price;
+                             ?>
+                             FOR THE TOTAL AMOUNT OF: <?php echo "R " . $total ?>
+                        </div>
                     </div>
                 <?php
-            // }
+        
         }
-        function displayBooking($conn) {
-
-        if($result = $conn->query("SELECT * FROM bookings WHERE guestname='$this->user")) {
-            ?> 
-                <div>
-                    Hotel Name: <?php echo $result["hotelname"];?>
-                    CHECKIN DATE:<?php echo $result["arrival"];?>
-                    CHECKOUT DATE: <?php echo $result["departure"];?>
-                    NUMBER OF ROOMS: <?php echo $result["rooms"];?>
-                    LENGTH OF STAY: <?php $datetime1 = new DateTime($_POST["arrival"]);
-                    $datetime2 = new DateTime($_POST["departure"]);
-                    $numDays= $datetime1->diff($datetime2);
-                    echo $interval->format('%d% days');?>
-                </div> 
-
-            <?php
-        };
-        }
+        
 
         // method to calculate the user's invoice
-        function invoice() {
+        function invoice($conn) {
             $prices = $conn->query("CREATE TABLE IF NOT EXISTS prices (
-                hotel INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                hotel_id INT(4),
                 hotel_name VARCHAR(50),
                 cost INT(6))");
+            if($conn->query("INSERT INTO prices(hotel_id, hotel_name, cost) VALUES (1, 'Mojo Hotel',800),(2, 'Cape Diamond Hotel',1200), (3, 'Fountains Hotel',1350), (4, 'Taj Hotel',1500);")) {
+
+            } else {
+                echo "error " . $conn->error;
+            }
+
+           
+
         }
     }
 

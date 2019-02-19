@@ -219,6 +219,13 @@ a {
     height: 200px;
 }
 
+/* Footer */
+
+footer {
+    text-align: center;
+    font-size: .8em;
+}
+
 
 /* Responsive design */
 
